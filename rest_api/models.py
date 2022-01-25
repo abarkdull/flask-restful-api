@@ -26,3 +26,9 @@ class User(db.Model):
         self.username = username
         self.password = password
 
+
+# To create tables from scratch, uncomment below line, 
+# open python interactive shell and type:
+# "from rest_api import models"
+# 
+# db.create_all()
