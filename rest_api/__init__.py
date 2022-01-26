@@ -1,22 +1,27 @@
 from flask import Flask
-from flask_restful import Api, Resource
+from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 import os
-
 from flask_jwt import JWT
 
 
 # grabs working directory
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-
+# initalize and configure app
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SECRET_KEY'] = 'austin'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# set instance of db and api with app
 db = SQLAlchemy(app)
 api = Api(app)
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 
 from rest_api.security import authenticate, identity 
 

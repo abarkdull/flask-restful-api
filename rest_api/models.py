@@ -13,6 +13,16 @@ class Item(db.Model):
         self.name = name
         self.price = price
 
+    def json(self):
+        return {'name': self.name,
+                'price': self.price}
+
+
+    @classmethod
+    def get_all_items(cls):
+
+        return { "items": [ item.json() for item in Item.query.all() ]}
+
 
 class User(db.Model):
 

@@ -9,20 +9,8 @@ class ItemList(Resource):
 
     @jwt_required()
     def get(self):
-        items = Item.query.all()
-        items_json = []
-
-        for item in items:
-            new_item = {
-                "name": item.name,
-                "price": item.price
-            }
-            items_json.append(new_item)
-
-        if items:
-            return items_json
-        else:
-            return None
+        
+        return Item.get_all_items()
 
 
 class ItemResource(Resource):
