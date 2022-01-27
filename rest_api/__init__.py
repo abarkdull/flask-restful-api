@@ -26,6 +26,12 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
+@app.route("/")
+def index():
+    return {
+        "message": "welcome to my API"
+    }
+
 
 from rest_api.security import authenticate, identity 
 
