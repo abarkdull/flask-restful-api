@@ -6,13 +6,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt import JWT
 
 
-
 # grabs working directory
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # initalize and configure app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://imhfnopbllnpue:248e215ea81a7c33ba388932adc9faad7187d88ab18fce05fec87f31774d2b03@ec2-34-233-157-189.compute-1.amazonaws.com:5432/dd27kp87s38sem"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL_CUSTOM")
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -36,9 +35,9 @@ def index():
 from rest_api.security import authenticate, identity 
 
 jwt = JWT(app, authenticate, identity)
-app.config["JWT_SECRET_KEY"] = 'test123'
-app.config["JWT_ALGORITHM"] = 'HS256'
-app.config["JWT_AUTH_ENDPOINT"] = 'jwt'
+app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY")
+app.config["JWT_ALGORITHM"] = os.environ.get("JWT_ALGORITHM")
+app.config["JWT_AUTH_ENDPOINT"] = os.environ.get("JWT_AUTH_ENDPOINT")
 
 
 from resources.item import ItemList, ItemResource
