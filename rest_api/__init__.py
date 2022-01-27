@@ -36,6 +36,9 @@ def index():
 from rest_api.security import authenticate, identity 
 
 jwt = JWT(app, authenticate, identity)
+app.config["JWT_SECRET_KEY"] = 'test123'
+app.config["JWT_ALGORITHM"] = 'SH256'
+app.config["JWT_AUTH_ENDPOINT"] = 'jwt'
 
 
 from resources.item import ItemList, ItemResource
