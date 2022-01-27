@@ -5,11 +5,7 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt import JWT
 
-# load_dotenv()
-# env_path = Path('.')/',env'
-# load_dotenv(dotenv_path=env_path)
 
-print(os.getenv("SECRET_KEY"))
 
 # grabs working directory
 basedir = os.path.abspath(os.path.dirname(__file__))
