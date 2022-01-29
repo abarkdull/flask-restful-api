@@ -12,11 +12,15 @@ Endpoints:
   
 
 ## Installation
+To run locally:
 ```
 pip install -r requirements.txt
 ```
-
-## Run
 ```
 python app.py
+```
+
+## Deployed URL
+```
+https://https://agile-depths-324654.herokuapp.com/
 ```
