@@ -22,5 +22,5 @@ python app.py
 
 ## Deployed URL
 ```
-https://https://agile-depths-324654.herokuapp.com/
+https://agile-depths-324654.herokuapp.com/
 ```
